@@ -1,0 +1,14 @@
+:root {
+  --theme-color-dark: #003324;
+  --theme-color: #00A170;
+  --theme-color-light: LightGray;
+}
+
+#App-Container {
+  background-color: var(--theme-color-dark);
+  color: var(--theme-color-light);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
