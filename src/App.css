@@ -12,3 +12,9 @@
   align-items: center;
   justify-content: center;
 }
+
+#App-Card {
+  background-color: var(--theme-color);
+  color: #f4f4f4;
+  min-width: 30vw;
+}
