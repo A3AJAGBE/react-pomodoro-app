@@ -1,3 +1,10 @@
+:root {
+  background-color: #003324;
+  color: LightGray;
+  --theme-bg-color: #00A170;
+  --theme-color: LightGray;
+}
+
 body {
   margin: 0;
 }
