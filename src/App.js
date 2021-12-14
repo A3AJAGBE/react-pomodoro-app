@@ -2,7 +2,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 
 const App = () => {
@@ -22,12 +21,12 @@ const App = () => {
 						</Card.Text>
 						
 					</Card.Body>
-					<Card.Footer className="text-muted">
-						<ButtonGroup size="lg" className="d-grid gap-2 d-md-block">
-							<Button variant="dark">Left</Button>
-							<Button variant="danger">Middle</Button>
-							<Button variant="warning">Right</Button>
-						</ButtonGroup>
+					<Card.Footer className="flex-nowrap p-0">
+						<Button className="col-4 m-0 rounded-0 Card-Btn" id="start_stop">Start</Button>
+
+						<Button className="col-4 m-0 rounded-0 Card-Btn" id="reset">Reset</Button>
+
+						<Button className="col-4 m-0 rounded-0 Card-Btn" id="stop">Stop</Button>
 					</Card.Footer>
 				</Card>
 			</div>
