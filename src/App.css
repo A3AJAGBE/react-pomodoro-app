@@ -2,6 +2,8 @@
   --theme-color-dark: #003324;
   --theme-color: #00A170;
   --theme-color-light: LightGray;
+  --warning: #ffc107;
+  --danger: #dc3545;
 }
 
 #App-Container {
@@ -17,4 +19,25 @@
   background-color: var(--theme-color);
   color: #f4f4f4;
   min-width: 30vw;
+}
+
+#App-Card .Card-Btn {
+  background-color: var(--theme-color);
+  border-color: var(--theme-color);
+}
+
+#start_stop:hover {
+  background-color: var(--theme-color-dark);
+}
+
+#reset:hover {
+  background-color: var(--warning);
+}
+
+#stop:hover {
+  background-color: var(--danger);
+}
+
+#App-Card .Card-Btn:focus {
+  box-shadow: none;
 }
