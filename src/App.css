@@ -21,7 +21,7 @@
   min-width: 30vw;
 }
 
-#App-Card .Card-Btn {
+#App-Card .Card-Btn, #Settings .btn {
   background-color: var(--theme-color);
   border-color: var(--theme-color);
 }
