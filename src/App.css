@@ -40,6 +40,17 @@
   background-color: var(--danger);
 }
 
-#App-Card .Card-Btn:focus {
+#App-Card .Card-Btn:focus, #Settings .btn:focus{
   box-shadow: none;
+}
+
+#Settings .btn {
+  background-color: var(--theme-color-dark);
+  border-color: var(--theme-color);
+}
+
+#Settings .btn:hover {
+  background-color: var(--theme-color);
+  border-color: var(--theme-color);
+
 }
