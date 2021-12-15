@@ -15,11 +15,11 @@ const App = () => {
 				<span className="lead"> 25 + 5 Time Management Clock </span>
 
 				<Card className="" id="App-Card">
-					<Card.Header>Session</Card.Header>
+					<Card.Header id="timer-label">Session</Card.Header>
 					<Card.Body>
 						
-						<Card.Text>
-							00 : 00
+						<Card.Text id="time-left">
+							25:00
 						</Card.Text>
 						
 					</Card.Body>
@@ -35,17 +35,17 @@ const App = () => {
 				<div class="mx-auto m-3" id="Settings">
 					<Row>
 						<Col md={6}>
-							<div className="mb-3">
-								<p>Work Time</p>
-								<Button className="me-2">⬆</Button> <span>25</span> <Button className="ms-2">⬇️</Button>
+							<div className="mb-3" >
+								<p id="session-label">Work Time</p>
+								<Button className="me-2" id="session-increment">⬆</Button> <span id="session-length">25</span> <Button className="ms-2" id="session-decrement">⬇️</Button>
 							</div>
 							
 						</Col>
 
 						<Col md={6}>
-							<div className="mb-3">
-								<p>Break Time</p>
-								<Button className="me-2">⬆</Button> <span>5</span> <Button className="ms-2">⬇️</Button>
+							<div className="mb-3" >
+								<p id="break-label">Break Time</p>
+								<Button className="me-2" id="break-increment">⬆</Button> <span  id="break-length">5</span> <Button className="ms-2" id="break-decrement">⬇️</Button>
 							</div>
 						</Col>
 					</Row>
