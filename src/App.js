@@ -11,8 +11,8 @@ const App = () => {
 		<Container fluid id="App-Container">
 			
 			<div className="App-Div text-center">
-				<h1>Pomodoro App</h1>
-				<span className="lead"> 25 + 5 Time Management Clock </span>
+				<h1 className='display-1'>Pomodoro App</h1>
+				<h2 className="display-6"> 25 + 5 Time Management Clock </h2>
 
 				<Card className="" id="App-Card">
 					<Card.Header id="timer-label">Session</Card.Header>
