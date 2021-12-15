@@ -32,11 +32,11 @@
   background-color: var(--theme-color-dark);
 }
 
-#reset:hover {
+#pause:hover {
   background-color: var(--warning);
 }
 
-#stop:hover {
+#reset:hover {
   background-color: var(--danger);
 }
 
