@@ -44,6 +44,24 @@ const App = () => {
 		setState(workLength.toString())
 	}
 
+	const incBreakTime = (e) => {
+		if (breakLength >= 60) {
+			return;
+		} else {
+			breakLength++;
+		}
+		setBreakTime(breakLength.toString());
+	}
+
+	const decBreakTime = (e) => {
+		if (breakLength <= 1) {
+			return;
+		} else {
+			breakLength--;
+		}
+		setBreakTime(breakLength.toString());
+	}
+
 
 	return (
 		<Container fluid id="App-Container">
@@ -84,7 +102,7 @@ const App = () => {
 						<Col md={6}>
 							<div className="mb-3" >
 								<p id="break-label">Break Time</p>
-								<Button className="me-2" id="break-increment"> {ArrowUp} </Button> <span  id="break-length"> {breakTime} </span> <Button className="ms-2" id="break-decrement">{ArrowDown}</Button>
+								<Button className="me-2" id="break-increment" onClick={incBreakTime}> {ArrowUp} </Button> <span  id="break-length"> {breakTime} </span> <Button className="ms-2" id="break-decrement" onClick={decBreakTime}>{ArrowDown}</Button>
 							</div>
 						</Col>
 					</Row>
