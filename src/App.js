@@ -15,8 +15,8 @@ const Start = <FontAwesomeIcon icon={faPlay} />
 const Pause = <FontAwesomeIcon icon={faPause} />
 const Reset = <FontAwesomeIcon icon={faRedoAlt} />
 
-let workLength = 20;
-let breakLength = 3;
+let workLength = 25;
+let breakLength = 5;
 
 
 const App = () => {
@@ -25,7 +25,7 @@ const App = () => {
 	const [state, setState] = useState(workTime);
 
 	const incWorkTime = (e) => {
-		if (workLength >= 60) {
+		if (workLength > 59) {
 			return;
 		} else {
 			workLength++;
@@ -45,7 +45,7 @@ const App = () => {
 	}
 
 	const incBreakTime = (e) => {
-		if (breakLength >= 60) {
+		if (breakLength > 59) {
 			return;
 		} else {
 			breakLength++;
@@ -60,6 +60,14 @@ const App = () => {
 			breakLength--;
 		}
 		setBreakTime(breakLength.toString());
+	}
+
+	const reset = () => {
+		let workLength = 25;
+		let breakLength = 5;
+		setState(workLength);
+		setWorkTime(workLength);
+		setBreakTime(breakLength);
 	}
 
 
@@ -84,7 +92,7 @@ const App = () => {
 
 						<Button className="col-4 m-0 rounded-0 Card-Btn" id="pause">{Pause} <span className='ps-1'>Pause</span> </Button>
 
-						<Button className="col-4 m-0 rounded-0 Card-Btn" id="reset">{Reset} <span className='ps-1'>Reset</span></Button>
+						<Button className="col-4 m-0 rounded-0 Card-Btn" id="reset" onClick={reset}>{Reset} <span className='ps-1'>Reset</span></Button>
 
 					</Card.Footer>
 				</Card>
@@ -94,7 +102,7 @@ const App = () => {
 						<Col md={6}>
 							<div className="mb-3" >
 								<p id="session-label">Work Time</p>
-								<Button className="me-2" id="session-increment" onClick={incWorkTime}> {ArrowUp} </Button> <span id="session-length"> {workTime} </span> <Button className="ms-2" id="session-decrement" onClick={decWorkTime}>{ArrowDown}</Button>
+								<Button className="me-2" id="session-increment" onClick={incWorkTime}> {ArrowUp} </Button> <span id="session-length">{workTime}</span> <Button className="ms-2" id="session-decrement" onClick={decWorkTime}>{ArrowDown}</Button>
 							</div>
 							
 						</Col>
@@ -102,7 +110,7 @@ const App = () => {
 						<Col md={6}>
 							<div className="mb-3" >
 								<p id="break-label">Break Time</p>
-								<Button className="me-2" id="break-increment" onClick={incBreakTime}> {ArrowUp} </Button> <span  id="break-length"> {breakTime} </span> <Button className="ms-2" id="break-decrement" onClick={decBreakTime}>{ArrowDown}</Button>
+								<Button className="me-2" id="break-increment" onClick={incBreakTime}> {ArrowUp} </Button> <span id="break-length">{breakTime}</span> <Button className="ms-2" id="break-decrement" onClick={decBreakTime}>{ArrowDown}</Button>
 							</div>
 						</Col>
 					</Row>
