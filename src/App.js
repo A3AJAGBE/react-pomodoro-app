@@ -99,11 +99,10 @@ const App = () => {
 	// 	}
 	// }
 
-	// TODO: update
 	const reset = () => {
 		let workLength = 25;
 		let breakLength = 5;
-		setState(workLength);
+		setState(timeFormat(workLength));
 		setWorkTime(workLength);
 		setBreakTime(breakLength);
 	}
