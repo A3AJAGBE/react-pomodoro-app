@@ -18,11 +18,27 @@ const Reset = <FontAwesomeIcon icon={faRedoAlt} />
 let workLength = 25;
 let breakLength = 5;
 
+const timeFormat = (n) => {
+	let num = n * 60; //number in seconds.
+
+	let minutes = Math.floor(num / 60);
+	let seconds = num % 60;
+
+	if (minutes < 10) {
+		minutes = `0${minutes}`;
+	}
+
+	if (seconds < 10) {
+		seconds = `0${seconds}`;
+	}
+
+	return `${minutes}:${seconds}`;
+}
 
 const App = () => {
-	const [breakTime, setBreakTime] = useState(breakLength.toString());
-	const [workTime, setWorkTime] = useState(workLength.toString());
-	const [state, setState] = useState(workTime);
+	const [breakTime, setBreakTime] = useState(String(breakLength));
+	const [workTime, setWorkTime] = useState(String(workLength));
+	const [state, setState] = useState(timeFormat(workTime));
 
 	const incWorkTime = (e) => {
 		if (workLength > 59) {
@@ -30,8 +46,8 @@ const App = () => {
 		} else {
 			workLength++;
 		}
-		setWorkTime(workLength.toString());
-		setState(workLength.toString());
+		setWorkTime(String(workLength));
+		setState(timeFormat(workLength));
 	}
 
 	const decWorkTime = (e) => {
@@ -40,8 +56,8 @@ const App = () => {
 		} else {
 			workLength--;
 		}
-		setWorkTime(workLength.toString());
-		setState(workLength.toString())
+		setWorkTime(String(workLength));
+		setState(timeFormat(workLength));
 	}
 
 	const incBreakTime = (e) => {
@@ -50,7 +66,7 @@ const App = () => {
 		} else {
 			breakLength++;
 		}
-		setBreakTime(breakLength.toString());
+		setBreakTime(String(breakLength));
 	}
 
 	const decBreakTime = (e) => {
@@ -59,9 +75,31 @@ const App = () => {
 		} else {
 			breakLength--;
 		}
-		setBreakTime(breakLength.toString());
+		setBreakTime(String(breakLength));
 	}
 
+	// const countdown = count => {
+	// 	setState(() => {
+	// 		if (count > 0) {
+	// 			count -= 1;
+	// 		}
+	// 	}, 1000);
+	// }
+
+	// const startSession = () => {
+	// 	let timerRepeat = repeat;
+	// 	timerRepeat += 1;
+	// 	let workSecs = Number(workTime) * 60;
+	// 	let breakSecs = breakTime * 60;
+
+	// 	if (timerRepeat % 2 === 0) {
+	// 		countdown(breakSecs);
+	// 	} else {
+	// 		countdown(workSecs);
+	// 	}
+	// }
+
+	// TODO: update
 	const reset = () => {
 		let workLength = 25;
 		let breakLength = 5;
@@ -83,7 +121,7 @@ const App = () => {
 					<Card.Body>
 						
 						<Card.Text id="time-left">
-							{state}:00
+							{state}
 						</Card.Text>
 						
 					</Card.Body>
