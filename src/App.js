@@ -27,6 +27,8 @@ const timeFormat = (num) => {
 	return `${minutes}:${seconds}`;
 }
 
+const MAX = 60;
+const MIN = 1;
 
 const Dashboard = () => {
 	const [timerLabel, setTimerLabel] = useState("App Session");
@@ -36,13 +38,26 @@ const Dashboard = () => {
 	
 	const incWorkTime = () => {
 		let workLength = workTime;
-		if (workLength > 59) {
-			return;
+		if (workLength < MAX) {
+			workLength += 1;
 		} else {
-			workLength++;
+			setTimerLabel("Maximum time is 60 minutes");
 		}
 		setWorkTime(workLength);
 		setTimeLeft(timeFormat(workLength * 60));
+		setTimerLabel("Increasing Work Time");
+	}
+
+	const decWorkTime = () => {
+		let workLength = workTime;
+		if (workLength > MIN) {
+			workLength -= 1;
+		} else {
+			setTimerLabel("Minimum time is 1 minute");
+		}
+		setWorkTime(workLength);
+		setTimeLeft(timeFormat(workLength * 60));
+		setTimerLabel("Decreasing Work Time");
 	}
 
 	return (
@@ -74,7 +89,7 @@ const Dashboard = () => {
 							<p id="session-label">Work Time</p>
 							<Button className="me-2" id="session-increment" onClick={incWorkTime}> {ArrowUpIcon} </Button> 
 							<span id="session-length">{workTime}</span> 
-							<Button className="ms-2" id="session-decrement" >{ArrowDownIcon}</Button>
+							<Button className="ms-2" id="session-decrement" onClick={decWorkTime}>{ArrowDownIcon}</Button>
 						</div>
 						
 					</Col>
