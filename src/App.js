@@ -15,25 +15,50 @@ const ResetIcon = <FontAwesomeIcon icon={faRedoAlt} />
 
 const Dashboard = () => {
 	return (
-		<Card className="" id="App-Card">
-			<Card.Header id="timer-label">sesLabel</Card.Header>
-			<Card.Body>
-				<Card.Text id="time-left">state</Card.Text>
-			</Card.Body>
-			<Card.Footer className="flex-nowrap p-0">
-				<Button className="col-4 m-0 rounded-0 Card-Btn" id="start_stop"> {StartIcon} 
-					<span className='ps-1'>Start</span>
-				</Button>
+		<section>
+			<Card className="" id="App-Card">
+				<Card.Header id="timer-label">sesLabel</Card.Header>
+				<Card.Body>
+					<Card.Text id="time-left">state</Card.Text>
+				</Card.Body>
+				<Card.Footer className="flex-nowrap p-0">
+					<Button className="col-4 m-0 rounded-0 Card-Btn" id="start_stop"> {StartIcon} 
+						<span className='ps-1'>Start</span>
+					</Button>
 
-				<Button className="col-4 m-0 rounded-0 Card-Btn" id="pause"> {PauseIcon} 
-					<span className='ps-1'>Pause</span> 
-				</Button>
+					<Button className="col-4 m-0 rounded-0 Card-Btn" id="pause"> {PauseIcon} 
+						<span className='ps-1'>Pause</span> 
+					</Button>
 
-				<Button className="col-4 m-0 rounded-0 Card-Btn" id="reset"> {ResetIcon} 
-					<span className='ps-1'>Reset</span>
-				</Button>
-			</Card.Footer>
-		</Card>
+					<Button className="col-4 m-0 rounded-0 Card-Btn" id="reset"> {ResetIcon} 
+						<span className='ps-1'>Reset</span>
+					</Button>
+				</Card.Footer>
+			</Card>
+
+			<div class="mx-auto m-3" id="Settings">
+				<Row>
+					<Col md={6}>
+						<div className="mb-3" >
+							<p id="session-label">Work Time</p>
+							<Button className="me-2" id="session-increment"> {ArrowUpIcon} </Button> 
+							<span id="session-length">workTime</span> 
+							<Button className="ms-2" id="session-decrement" >{ArrowDownIcon}</Button>
+						</div>
+						
+					</Col>
+
+					<Col md={6}>
+						<div className="mb-3" >
+							<p id="break-label">Break Time</p>
+							<Button className="me-2" id="break-increment"> {ArrowUpIcon} </Button> 
+							<span id="break-length">breakTime</span> 
+							<Button className="ms-2" id="break-decrement">{ArrowDownIcon}</Button>
+						</div>
+					</Col>
+				</Row>
+			</div>
+		</section>
 	);
 }
 
