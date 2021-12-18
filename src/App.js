@@ -34,6 +34,16 @@ const Dashboard = () => {
 	const [breakTime, setBreakTime] = useState(5);
 	const [timeLeft, setTimeLeft] = useState(timeFormat(workTime * 60));
 	
+	const incWorkTime = () => {
+		let workLength = workTime;
+		if (workLength > 59) {
+			return;
+		} else {
+			workLength++;
+		}
+		setWorkTime(workLength);
+		setTimeLeft(timeFormat(workLength * 60));
+	}
 
 	return (
 		<section>
@@ -62,7 +72,7 @@ const Dashboard = () => {
 					<Col md={6}>
 						<div className="mb-3" >
 							<p id="session-label">Work Time</p>
-							<Button className="me-2" id="session-increment"> {ArrowUpIcon} </Button> 
+							<Button className="me-2" id="session-increment" onClick={incWorkTime}> {ArrowUpIcon} </Button> 
 							<span id="session-length">{workTime}</span> 
 							<Button className="ms-2" id="session-decrement" >{ArrowDownIcon}</Button>
 						</div>
