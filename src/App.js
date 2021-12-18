@@ -12,14 +12,23 @@ const StartIcon = <FontAwesomeIcon icon={faPlay} />
 const PauseIcon = <FontAwesomeIcon icon={faPause} />
 const ResetIcon = <FontAwesomeIcon icon={faRedoAlt} />
 
+const WorkInMins = 25 * 60;
+const BreakInMins = 5 * 60;
+
 
 const Dashboard = () => {
+	const [timerLabel, setTimerLabel] = useState("App Session");
+	const [workTime, setWorkTime] = useState(WorkInMins);
+	const [breakTime, setBreakTime] = useState(BreakInMins);
+	const [timeLeft, setTimeLeft] = useState(workTime);
+	
+
 	return (
 		<section>
 			<Card className="" id="App-Card">
-				<Card.Header id="timer-label">sesLabel</Card.Header>
+				<Card.Header id="timer-label"> {timerLabel} </Card.Header>
 				<Card.Body>
-					<Card.Text id="time-left">state</Card.Text>
+					<Card.Text id="time-left"> {timeLeft} </Card.Text>
 				</Card.Body>
 				<Card.Footer className="flex-nowrap p-0">
 					<Button className="col-4 m-0 rounded-0 Card-Btn" id="start_stop"> {StartIcon} 
@@ -42,7 +51,7 @@ const Dashboard = () => {
 						<div className="mb-3" >
 							<p id="session-label">Work Time</p>
 							<Button className="me-2" id="session-increment"> {ArrowUpIcon} </Button> 
-							<span id="session-length">workTime</span> 
+							<span id="session-length"> {workTime} </span> 
 							<Button className="ms-2" id="session-decrement" >{ArrowDownIcon}</Button>
 						</div>
 						
@@ -52,7 +61,7 @@ const Dashboard = () => {
 						<div className="mb-3" >
 							<p id="break-label">Break Time</p>
 							<Button className="me-2" id="break-increment"> {ArrowUpIcon} </Button> 
-							<span id="break-length">breakTime</span> 
+							<span id="break-length"> {breakTime} </span> 
 							<Button className="ms-2" id="break-decrement">{ArrowDownIcon}</Button>
 						</div>
 					</Col>
