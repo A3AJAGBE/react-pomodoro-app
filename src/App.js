@@ -12,15 +12,27 @@ const StartIcon = <FontAwesomeIcon icon={faPlay} />
 const PauseIcon = <FontAwesomeIcon icon={faPause} />
 const ResetIcon = <FontAwesomeIcon icon={faRedoAlt} />
 
-const WorkInMins = 25 * 60;
-const BreakInMins = 5 * 60;
+const timeFormat = (num) => {
+	let minutes = Math.floor(num / 60);
+	let seconds = num % 60;
+
+	if (minutes < 10) {
+		minutes = `0${minutes}`;
+	}
+
+	if (seconds < 10) {
+		seconds = `0${seconds}`;
+	}
+
+	return `${minutes}:${seconds}`;
+}
 
 
 const Dashboard = () => {
 	const [timerLabel, setTimerLabel] = useState("App Session");
-	const [workTime, setWorkTime] = useState(WorkInMins);
-	const [breakTime, setBreakTime] = useState(BreakInMins);
-	const [timeLeft, setTimeLeft] = useState(workTime);
+	const [workTime, setWorkTime] = useState(25);
+	const [breakTime, setBreakTime] = useState(5);
+	const [timeLeft, setTimeLeft] = useState(timeFormat(workTime * 60));
 	
 
 	return (
@@ -51,7 +63,7 @@ const Dashboard = () => {
 						<div className="mb-3" >
 							<p id="session-label">Work Time</p>
 							<Button className="me-2" id="session-increment"> {ArrowUpIcon} </Button> 
-							<span id="session-length"> {workTime} </span> 
+							<span id="session-length">{workTime}</span> 
 							<Button className="ms-2" id="session-decrement" >{ArrowDownIcon}</Button>
 						</div>
 						
@@ -61,7 +73,7 @@ const Dashboard = () => {
 						<div className="mb-3" >
 							<p id="break-label">Break Time</p>
 							<Button className="me-2" id="break-increment"> {ArrowUpIcon} </Button> 
-							<span id="break-length"> {breakTime} </span> 
+							<span id="break-length">{breakTime}</span> 
 							<Button className="ms-2" id="break-decrement">{ArrowDownIcon}</Button>
 						</div>
 					</Col>
