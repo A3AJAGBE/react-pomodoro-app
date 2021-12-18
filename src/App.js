@@ -60,6 +60,18 @@ const Dashboard = () => {
 		setTimerLabel("Decreasing Work Time");
 	}
 
+	const incBreakTime = () => {
+		let breakLength = breakTime;
+		if (breakLength < MAX) {
+			breakLength += 1;
+		} else {
+			setTimerLabel("Maximum time is 60 minutes");
+		}
+		setBreakTime(breakLength);
+		setTimerLabel("Increasing Break Time");
+	}
+	
+
 	return (
 		<section>
 			<Card className="" id="App-Card">
@@ -97,7 +109,7 @@ const Dashboard = () => {
 					<Col md={6}>
 						<div className="mb-3" >
 							<p id="break-label">Break Time</p>
-							<Button className="me-2" id="break-increment"> {ArrowUpIcon} </Button> 
+							<Button className="me-2" id="break-increment" onClick={incBreakTime}> {ArrowUpIcon} </Button> 
 							<span id="break-length">{breakTime}</span> 
 							<Button className="ms-2" id="break-decrement">{ArrowDownIcon}</Button>
 						</div>
