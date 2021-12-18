@@ -70,6 +70,17 @@ const Dashboard = () => {
 		setBreakTime(breakLength);
 		setTimerLabel("Increasing Break Time");
 	}
+
+	const decBreakTime = () => {
+		let breakLength = breakTime;
+		if (breakLength > MIN) {
+			breakLength -= 1;
+		} else {
+			setTimerLabel("Minimum time is 1 minute");
+		}
+		setBreakTime(breakLength);
+		setTimerLabel("Decreasing Break Time");
+	}
 	
 
 	return (
@@ -111,7 +122,7 @@ const Dashboard = () => {
 							<p id="break-label">Break Time</p>
 							<Button className="me-2" id="break-increment" onClick={incBreakTime}> {ArrowUpIcon} </Button> 
 							<span id="break-length">{breakTime}</span> 
-							<Button className="ms-2" id="break-decrement">{ArrowDownIcon}</Button>
+							<Button className="ms-2" id="break-decrement" onClick={decBreakTime}>{ArrowDownIcon}</Button>
 						</div>
 					</Col>
 				</Row>
