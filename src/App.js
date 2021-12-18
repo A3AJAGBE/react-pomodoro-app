@@ -18,19 +18,20 @@ const Dashboard = () => {
 		<Card className="" id="App-Card">
 			<Card.Header id="timer-label">sesLabel</Card.Header>
 			<Card.Body>
-				
-				<Card.Text id="time-left">
-					state
-				</Card.Text>
-				
+				<Card.Text id="time-left">state</Card.Text>
 			</Card.Body>
 			<Card.Footer className="flex-nowrap p-0">
-				<Button className="col-4 m-0 rounded-0 Card-Btn" id="start_stop"> {StartIcon} <span className='ps-1'>Start</span></Button>
+				<Button className="col-4 m-0 rounded-0 Card-Btn" id="start_stop"> {StartIcon} 
+					<span className='ps-1'>Start</span>
+				</Button>
 
-				<Button className="col-4 m-0 rounded-0 Card-Btn" id="pause"> {PauseIcon} <span className='ps-1'>Pause</span> </Button>
+				<Button className="col-4 m-0 rounded-0 Card-Btn" id="pause"> {PauseIcon} 
+					<span className='ps-1'>Pause</span> 
+				</Button>
 
-				<Button className="col-4 m-0 rounded-0 Card-Btn" id="reset"> {ResetIcon} <span className='ps-1'>Reset</span></Button>
-
+				<Button className="col-4 m-0 rounded-0 Card-Btn" id="reset"> {ResetIcon} 
+					<span className='ps-1'>Reset</span>
+				</Button>
 			</Card.Footer>
 		</Card>
 	);
