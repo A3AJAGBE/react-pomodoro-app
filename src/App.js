@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, Card, Button, Row, Col} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -27,63 +27,68 @@ const timeFormat = (num) => {
 	return `${minutes}:${seconds}`;
 }
 
-const MAX = 60;
-const MIN = 1;
-// const WorkDefault = 25;
-// const BreakDefault = 5;
-
-const Dashboard = () => {
-	const [timerLabel, setTimerLabel] = useState("App Session");
-	const [workTime, setWorkTime] = useState(25);
-	const [breakTime, setBreakTime] = useState(5);
-	const [timeLeft, setTimeLeft] = useState(timeFormat(workTime * 60));
-	
+const Session = (props) => {
 	return (
-		<section>
-			<Card className="" id="App-Card">
-				<Card.Header id="timer-label"> {timerLabel} </Card.Header>
-				<Card.Body>
-					<Card.Text id="time-left"> {timeLeft} </Card.Text>
-				</Card.Body>
-				<Card.Footer className="flex-nowrap p-0">
-					<Button className="col-4 m-0 rounded-0 Card-Btn" id="start_stop"> {StartIcon} 
-						<span className='ps-1'>Start</span>
-					</Button>
-
-					<Button className="col-4 m-0 rounded-0 Card-Btn" id="pause"> {PauseIcon} 
-						<span className='ps-1'>Pause</span> 
-					</Button>
-
-					<Button className="col-4 m-0 rounded-0 Card-Btn" id="reset"> {ResetIcon} 
-						<span className='ps-1'>Reset</span>
-					</Button>
-				</Card.Footer>
-			</Card>
-
-			<div class="mx-auto m-3" id="Settings">
-				<Row>
-					<Col md={6}>
-						<div className="mb-3" >
-							<p id="session-label">Work Time</p>
-							<Button className="me-2" id="session-increment"> {ArrowUpIcon} </Button> 
-							<span id="session-length">{workTime}</span> 
-							<Button className="ms-2" id="session-decrement">{ArrowDownIcon}</Button>
-						</div>
-						
-					</Col>
-
-					<Col md={6}>
-						<div className="mb-3" >
-							<p id="break-label">Break Time</p>
-							<Button className="me-2" id="break-increment"> {ArrowUpIcon} </Button> 
-							<span id="break-length">{breakTime}</span> 
-							<Button className="ms-2" id="break-decrement">{ArrowDownIcon}</Button>
-						</div>
-					</Col>
-				</Row>
+		<Col md={6}>
+			<div className="mb-3" >
+				<p>{props.SessionName}</p>
+				<Button className="me-2" onClick={props.increaseClicked}>{ArrowUpIcon}</Button> 
+				<span>{props.SessionNameTime}</span> 
+				<Button className="ms-2" onClick={props.decreaseClicked}>{ArrowDownIcon}</Button>
 			</div>
-		</section>
+		</Col>
 	);
+}
+
+class Dashboard extends React.Component {
+	
+	render() {
+
+		const workSessionProps = {
+			SessionName: "Work Settings",
+			SessionNameTime: "25",
+			increaseClicked: this.workIncreaseClicked,
+			decreaseClicked: this.workDecreaseClicked
+		}
+
+		const breakSessionProps = {
+			SessionName: "Break Settings",
+			SessionNameTime: "5",
+			increaseClicked: this.breakIncreaseClicked,
+			decreaseClicked: this.breakDecreaseClicked
+		}
+
+		return (
+			<section>
+				<Card id="App-Card">
+					<Card.Header id="timer-label"> timerLabel </Card.Header>
+					<Card.Body>
+						<Card.Text id="time-left"> timeLeft </Card.Text>
+					</Card.Body>
+					<Card.Footer className="flex-nowrap p-0">
+						<Button className="col-4 m-0 rounded-0 Card-Btn" id="start_stop"> {StartIcon} 
+							<span className='ps-1'>Start</span>
+						</Button>
+		
+						<Button className="col-4 m-0 rounded-0 Card-Btn" id="pause"> {PauseIcon} 
+							<span className='ps-1'>Pause</span> 
+						</Button>
+		
+						<Button className="col-4 m-0 rounded-0 Card-Btn" id="reset"> {ResetIcon} 
+							<span className='ps-1'>Reset</span>
+						</Button>
+					</Card.Footer>
+				</Card>
+		
+				<div class="mx-auto m-3" id="Settings">
+					<Row>
+						<Session {...workSessionProps} />
+						<Session {...breakSessionProps} />
+					</Row>
+				</div>
+			</section>
+		);
+	}
 }
 
 
