@@ -41,19 +41,25 @@ const Session = (props) => {
 }
 
 class Dashboard extends React.Component {
+
+	state = {
+		workDefault: 25,
+		breakDefault: 5
+	}
 	
 	render() {
+		const {workDefault, breakDefault} = this.state;
 
 		const workSessionProps = {
 			SessionName: "Work Settings",
-			SessionNameTime: "25",
+			SessionNameTime: workDefault,
 			increaseClicked: this.workIncreaseClicked,
 			decreaseClicked: this.workDecreaseClicked
 		}
 
 		const breakSessionProps = {
 			SessionName: "Break Settings",
-			SessionNameTime: "5",
+			SessionNameTime: breakDefault,
 			increaseClicked: this.breakIncreaseClicked,
 			decreaseClicked: this.breakDecreaseClicked
 		}
