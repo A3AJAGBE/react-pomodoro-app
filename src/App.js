@@ -61,7 +61,8 @@ class Dashboard extends React.Component {
 
 		if (!inProgress) {
 			this.setState({
-				inProgress: true
+				inProgress: true,
+				timerLabel: "Session in Progress"
 			});
 			this.interval = setInterval(() => {
 				const {timeLeft} = this.state;
@@ -80,7 +81,8 @@ class Dashboard extends React.Component {
 		if (inProgress) {
 			clearInterval(this.interval);
 			this.setState({
-				inProgress: false
+				inProgress: false,
+				timerLabel: "Session Paused"
 			});
 		}
 	}
