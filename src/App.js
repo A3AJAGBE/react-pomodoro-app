@@ -44,11 +44,13 @@ class Dashboard extends React.Component {
 
 	state = {
 		workDefault: 25,
-		breakDefault: 5
+		breakDefault: 5,
+		timeLeft: timeFormat(25 * 60),
+		timerLabel: "App Session"
 	}
 	
 	render() {
-		const {workDefault, breakDefault} = this.state;
+		const {workDefault, breakDefault, timeLeft, timerLabel} = this.state;
 
 		const workSessionProps = {
 			SessionName: "Work Settings",
@@ -67,20 +69,20 @@ class Dashboard extends React.Component {
 		return (
 			<section>
 				<Card id="App-Card">
-					<Card.Header id="timer-label"> timerLabel </Card.Header>
+					<Card.Header id="timer-label"> {timerLabel} </Card.Header>
 					<Card.Body>
-						<Card.Text id="time-left"> timeLeft </Card.Text>
+						<Card.Text id="time-left"> {timeLeft} </Card.Text>
 					</Card.Body>
 					<Card.Footer className="flex-nowrap p-0">
-						<Button className="col-4 m-0 rounded-0 Card-Btn" id="start_stop"> {StartIcon} 
+						<Button className="col-4 m-0 rounded-0 Card-Btn" id="start_stop" onClick={this.startClicked}> {StartIcon} 
 							<span className='ps-1'>Start</span>
 						</Button>
 		
-						<Button className="col-4 m-0 rounded-0 Card-Btn" id="pause"> {PauseIcon} 
+						<Button className="col-4 m-0 rounded-0 Card-Btn" id="pause" onClick={this.pauseClicked}> {PauseIcon} 
 							<span className='ps-1'>Pause</span> 
 						</Button>
 		
-						<Button className="col-4 m-0 rounded-0 Card-Btn" id="reset"> {ResetIcon} 
+						<Button className="col-4 m-0 rounded-0 Card-Btn" id="reset" onClick={this.resetClicked}> {ResetIcon} 
 							<span className='ps-1'>Reset</span>
 						</Button>
 					</Card.Footer>
