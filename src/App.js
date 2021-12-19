@@ -37,34 +37,7 @@ const Dashboard = () => {
 	const [workTime, setWorkTime] = useState(25);
 	const [breakTime, setBreakTime] = useState(5);
 	const [timeLeft, setTimeLeft] = useState(timeFormat(workTime * 60));
-
-	const updateTime = () => {
-
-	}
-
-	const incWorkTime = () => {
-		let workLength = workTime;
-		if (workLength >= MAX) {
-			return;
-		} else {
-			workLength += 1;
-		}
-		setWorkTime(workLength);
-		setTimeLeft(timeFormat(workLength * 60));
-		setTimerLabel("Increasing Work Time");
-	}
-
-	const incBreakTime = () => {
-		let breakLength = breakTime;
-		if (breakLength >= MAX) {
-			return;
-		} else {
-			breakLength += 1;
-		}
-		setBreakTime(breakLength);
-		setTimerLabel("Increasing Break Time");
-	}
-
+	
 	return (
 		<section>
 			<Card className="" id="App-Card">
@@ -92,9 +65,9 @@ const Dashboard = () => {
 					<Col md={6}>
 						<div className="mb-3" >
 							<p id="session-label">Work Time</p>
-							<Button className="me-2" id="session-increment" onClick={incWorkTime}> {ArrowUpIcon} </Button> 
+							<Button className="me-2" id="session-increment"> {ArrowUpIcon} </Button> 
 							<span id="session-length">{workTime}</span> 
-							<Button className="ms-2" id="session-decrement" onClick={updateTime}>{ArrowDownIcon}</Button>
+							<Button className="ms-2" id="session-decrement">{ArrowDownIcon}</Button>
 						</div>
 						
 					</Col>
@@ -102,9 +75,9 @@ const Dashboard = () => {
 					<Col md={6}>
 						<div className="mb-3" >
 							<p id="break-label">Break Time</p>
-							<Button className="me-2" id="break-increment" onClick={incBreakTime}> {ArrowUpIcon} </Button> 
+							<Button className="me-2" id="break-increment"> {ArrowUpIcon} </Button> 
 							<span id="break-length">{breakTime}</span> 
-							<Button className="ms-2" id="break-decrement" onClick={() => updateTime(-1, "breakTime")}>{ArrowDownIcon}</Button>
+							<Button className="ms-2" id="break-decrement">{ArrowDownIcon}</Button>
 						</div>
 					</Col>
 				</Row>
