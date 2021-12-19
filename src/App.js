@@ -42,11 +42,47 @@ const Session = (props) => {
 
 class Dashboard extends React.Component {
 
+	constructor(props){
+		super(props);
+		this.interval = undefined;
+	}
+
 	state = {
 		workDefault: 25,
 		breakDefault: 5,
-		timeLeft: timeFormat(25 * 60),
-		timerLabel: "App Session"
+		timeLeft: 25 * 60,
+		timerLabel: "App Session",
+		inProgress: false, 
+		interval: undefined
+	}
+
+	startClicked = () => {
+		const {inProgress} = this.state;
+
+		if (!inProgress) {
+			this.setState({
+				inProgress: true
+			});
+			this.interval = setInterval(() => {
+				const {timeLeft} = this.state;
+				this.setState({
+					timeLeft: timeLeft - 1
+				});
+
+			}, 1000);
+		}
+		
+	}
+
+	pauseClicked = () => {
+		const {inProgress} = this.state;
+
+		if (inProgress) {
+			clearInterval(this.interval);
+			this.setState({
+				inProgress: false
+			});
+		}
 	}
 	
 	render() {
@@ -71,7 +107,7 @@ class Dashboard extends React.Component {
 				<Card id="App-Card">
 					<Card.Header id="timer-label"> {timerLabel} </Card.Header>
 					<Card.Body>
-						<Card.Text id="time-left"> {timeLeft} </Card.Text>
+						<Card.Text id="time-left"> {timeFormat(timeLeft)} </Card.Text>
 					</Card.Body>
 					<Card.Footer className="flex-nowrap p-0">
 						<Button className="col-4 m-0 rounded-0 Card-Btn" id="start_stop" onClick={this.startClicked}> {StartIcon} 
