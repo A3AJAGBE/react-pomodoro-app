@@ -65,11 +65,23 @@ class Dashboard extends React.Component {
 				timerLabel: "Session in Progress"
 			});
 			this.interval = setInterval(() => {
-				const {timeLeft} = this.state;
-				this.setState({
-					timeLeft: timeLeft - 1
-				});
+				const {timeLeft, 
+					timerLabel, 
+					breakDefault, 
+					workDefault} = this.state;
 
+				// Switching from work to break time when the timeleft gets to 0. 
+				if(timeLeft === 0) {
+					this.setState({
+						timerLabel: (timerLabel === "Session in Progress") ? "On Break" : "Session in Progress",
+
+						timeLeft: (timerLabel === "Session in Progress") ? (breakDefault * 60): (workDefault * 60)
+					});
+				} else {
+					this.setState({
+						timeLeft: timeLeft - 1
+					});
+				}
 			}, 1000);
 		}
 		
