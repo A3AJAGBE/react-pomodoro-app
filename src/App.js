@@ -59,10 +59,16 @@ class Dashboard extends React.Component {
 		inProgress: false
 	}
 
-	startClicked = () => {
+	startPauseClicked = () => {
 		const {inProgress} = this.state;
 
-		if (!inProgress) {
+		if (inProgress) {
+			clearInterval(this.interval);
+			this.setState({
+				inProgress: false,
+				timerLabel: "Session Paused"
+			});
+		} else {
 			this.setState({
 				inProgress: true,
 				timerLabel: "Session in Progress"
@@ -92,16 +98,8 @@ class Dashboard extends React.Component {
 		
 	}
 
-	pauseClicked = () => {
-		const {inProgress} = this.state;
-
-		if (inProgress) {
-			clearInterval(this.interval);
-			this.setState({
-				inProgress: false,
-				timerLabel: "Session Paused"
-			});
-		}
+	componentWillUnmount() {
+		clearInterval(this.interval);
 	}
 
 	resetClicked = () => {
@@ -159,7 +157,7 @@ class Dashboard extends React.Component {
 	}
 
 	render() {
-		const {workDefault, breakDefault, timeLeft, timerLabel} = this.state;
+		const {workDefault, breakDefault, timeLeft, timerLabel, inProgress} = this.state;
 
 		const workSessionProps = {
 			SessionName: "Work Settings",
@@ -189,13 +187,12 @@ class Dashboard extends React.Component {
 						<Card.Text id="time-left" className='display-4'> {timeFormat(timeLeft)} </Card.Text>
 					</Card.Body>
 					<Card.Footer className="flex-nowrap p-0">
-						<Button className="col-6 m-0 rounded-0 Card-Btn " id="start_stop" onClick={this.startClicked}> {StartIcon} 
-							<span className='ps-1 fs-5'>Start</span>
+						<Button className="col-6 m-0 rounded-0 Card-Btn" id={`${inProgress ? "pause" : "start_stop"}`} onClick={this.startPauseClicked}> 
+							{StartIcon}{PauseIcon}
+							<span className='ps-1 fs-5'>
+								{`${inProgress ? "Pause" : "Start"}`}
+							</span>
 						</Button>
-		
-						{/* <Button className="col-4 m-0 rounded-0 Card-Btn" id="pause" onClick={this.pauseClicked}> {PauseIcon} 
-							<span className='ps-1'>Pause</span> 
-						</Button> */}
 		
 						<Button className="col-6 m-0 rounded-0 Card-Btn" id="reset" onClick={this.resetClicked}> {ResetIcon} <span className='ps-1 fs-5'> Reset</span>
 						</Button>
