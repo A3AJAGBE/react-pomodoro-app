@@ -52,8 +52,7 @@ class Dashboard extends React.Component {
 		breakDefault: 5,
 		timeLeft: 25 * 60,
 		timerLabel: "App Session",
-		inProgress: false, 
-		interval: undefined
+		inProgress: false
 	}
 
 	startClicked = () => {
@@ -97,6 +96,18 @@ class Dashboard extends React.Component {
 				timerLabel: "Session Paused"
 			});
 		}
+	}
+
+	resetClicked = () => {
+		this.setState({
+			workDefault: 25,
+			breakDefault: 5,
+			timeLeft: 25 * 60,
+			timerLabel: "App Session",
+			inProgress: false
+		});
+		
+		clearInterval(this.interval);
 	}
 	
 	render() {
