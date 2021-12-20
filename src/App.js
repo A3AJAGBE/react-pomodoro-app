@@ -12,6 +12,8 @@ const StartIcon = <FontAwesomeIcon icon={faPlay} />
 const PauseIcon = <FontAwesomeIcon icon={faPause} />
 const ResetIcon = <FontAwesomeIcon icon={faRedoAlt} />
 
+const alarm = document.getElementById("beep");
+
 const timeFormat = (num) => {
 	let minutes = Math.floor(num / 60);
 	let seconds = num % 60;
@@ -31,17 +33,14 @@ const Session = (props) => {
 	return (
 		<Col md={6}>
 			<div className="mb-3" >
-				<p>{props.SessionName}</p>
-				<Button className="me-2" onClick={props.increaseClicked}>{ArrowUpIcon}</Button> 
+				<p id={`${props.idName}-label`}>{props.SessionName}</p>
+				<Button id={`${props.idName}-increment`} className="me-2" onClick={props.increaseClicked}>{ArrowUpIcon}</Button> 
 				<span>{props.SessionNameTime}</span> 
-				<Button className="ms-2" onClick={props.decreaseClicked}>{ArrowDownIcon}</Button>
+				<Button id={`${props.idName}-decrement`} className="ms-2" onClick={props.decreaseClicked}>{ArrowDownIcon}</Button>
 			</div>
 		</Col>
 	);
 }
-
-const alarm = document.getElementById("beep");
-
 class Dashboard extends React.Component {
 
 	constructor(props){
@@ -163,14 +162,16 @@ class Dashboard extends React.Component {
 			SessionName: "Work Settings",
 			SessionNameTime: workDefault,
 			increaseClicked: this.workIncreaseClicked,
-			decreaseClicked: this.workDecreaseClicked
+			decreaseClicked: this.workDecreaseClicked,
+			idName: "session"
 		}
 
 		const breakSessionProps = {
 			SessionName: "Break Settings",
 			SessionNameTime: breakDefault,
 			increaseClicked: this.breakIncreaseClicked,
-			decreaseClicked: this.breakDecreaseClicked
+			decreaseClicked: this.breakDecreaseClicked,
+			idName: "break"
 		}
 
 		return (
