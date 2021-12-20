@@ -37,10 +37,6 @@
   background-color: var(--theme-color-dark);
 }
 
-#pause:hover {
-  background-color: var(--warning);
-}
-
 #reset:hover {
   background-color: var(--danger);
 }
