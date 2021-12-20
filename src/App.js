@@ -117,42 +117,52 @@ class Dashboard extends React.Component {
 	}
 
 	workIncreaseClicked = () => {
-		const {workDefault} = this.state;
+		const {workDefault, inProgress} = this.state;
 
-		if (workDefault < 60) {
-			this.setState({
-				workDefault: workDefault + 1
-			});
+		if (!inProgress) {
+			if (workDefault < 60) {
+				this.setState({
+					workDefault: workDefault + 1,
+					timeLeft: (workDefault + 1) * 60
+				});
+			}
 		}
 	}
 
 	workDecreaseClicked = () => {
-		const {workDefault} = this.state;
+		const {workDefault, inProgress} = this.state;
 
-		if (workDefault > 0) {
-			this.setState({
-				workDefault: workDefault - 1
-			});
+		if (!inProgress) {
+			if (workDefault > 1) {
+				this.setState({
+					workDefault: workDefault - 1,
+					timeLeft: (workDefault - 1) * 60
+				});
+			}
 		}
 	}
 
 	breakIncreaseClicked = () => {
-		const {breakDefault} = this.state;
+		const {breakDefault, inProgress} = this.state;
 
-		if (breakDefault < 60) {
-			this.setState({
-				breakDefault: breakDefault + 1
-			});
+		if (!inProgress) {
+			if (breakDefault < 60) {
+				this.setState({
+					breakDefault: breakDefault + 1
+				});
+			}
 		}
 	}
 
 	breakDecreaseClicked = () => {
-		const {breakDefault} = this.state;
+		const {breakDefault, inProgress} = this.state;
 
-		if (breakDefault > 0) {
-			this.setState({
-				breakDefault: breakDefault - 1
-			});
+		if (!inProgress) {
+			if (breakDefault > 1) {
+				this.setState({
+					breakDefault: breakDefault - 1
+				});
+			}
 		}
 	}
 
@@ -187,7 +197,7 @@ class Dashboard extends React.Component {
 						<Card.Text id="time-left" className='display-4'> {timeFormat(timeLeft)} </Card.Text>
 					</Card.Body>
 					<Card.Footer className="flex-nowrap p-0">
-						<Button className="col-6 m-0 rounded-0 Card-Btn" id={`${inProgress ? "pause" : "start_stop"}`} onClick={this.startPauseClicked}> 
+						<Button className="col-6 m-0 rounded-0 Card-Btn" id="start_stop" onClick={this.startPauseClicked}> 
 							{StartIcon}{PauseIcon}
 							<span className='ps-1 fs-5'>
 								{`${inProgress ? "Pause" : "Start"}`}
