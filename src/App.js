@@ -40,6 +40,8 @@ const Session = (props) => {
 	);
 }
 
+const alarm = document.getElementById("beep");
+
 class Dashboard extends React.Component {
 
 	constructor(props){
@@ -76,6 +78,8 @@ class Dashboard extends React.Component {
 
 						timeLeft: (timerLabel === "Session in Progress") ? (breakDefault * 60): (workDefault * 60)
 					});
+
+					alarm.play()
 				} else {
 					this.setState({
 						timeLeft: timeLeft - 1
@@ -108,6 +112,8 @@ class Dashboard extends React.Component {
 		});
 
 		clearInterval(this.interval);
+		alarm.pause();
+		alarm.currentTime = 0;
 	}
 
 	workIncreaseClicked = () => {
