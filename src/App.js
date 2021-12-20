@@ -34,8 +34,11 @@ const Session = (props) => {
 		<Col md={6}>
 			<div className="mb-3" >
 				<p id={`${props.idName}-label`}>{props.SessionName}</p>
+
 				<Button id={`${props.idName}-increment`} className="me-2" onClick={props.increaseClicked}>{ArrowUpIcon}</Button> 
-				<span>{props.SessionNameTime}</span> 
+
+				<span id={`${props.idName}-length`}>{props.SessionNameTime}</span> 
+				
 				<Button id={`${props.idName}-decrement`} className="ms-2" onClick={props.decreaseClicked}>{ArrowDownIcon}</Button>
 			</div>
 		</Col>
