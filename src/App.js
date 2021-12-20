@@ -106,10 +106,50 @@ class Dashboard extends React.Component {
 			timerLabel: "App Session",
 			inProgress: false
 		});
-		
+
 		clearInterval(this.interval);
 	}
-	
+
+	workIncreaseClicked = () => {
+		const {workDefault} = this.state;
+
+		if (workDefault < 60) {
+			this.setState({
+				workDefault: workDefault + 1
+			});
+		}
+	}
+
+	workDecreaseClicked = () => {
+		const {workDefault} = this.state;
+
+		if (workDefault > 0) {
+			this.setState({
+				workDefault: workDefault - 1
+			});
+		}
+	}
+
+	breakIncreaseClicked = () => {
+		const {breakDefault} = this.state;
+
+		if (breakDefault < 60) {
+			this.setState({
+				breakDefault: breakDefault + 1
+			});
+		}
+	}
+
+	breakDecreaseClicked = () => {
+		const {breakDefault} = this.state;
+
+		if (breakDefault > 0) {
+			this.setState({
+				breakDefault: breakDefault - 1
+			});
+		}
+	}
+
 	render() {
 		const {workDefault, breakDefault, timeLeft, timerLabel} = this.state;
 
