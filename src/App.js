@@ -179,22 +179,25 @@ class Dashboard extends React.Component {
 
 		return (
 			<section>
-				<Card id="App-Card">
-					<Card.Header id="timer-label"> {timerLabel} </Card.Header>
+				<Card id="App-Card" className='mx-auto'>
+					<Card.Header id="timer-label" className='fs-3'> 
+						<div className='timerBG'>
+							{timerLabel} 
+						</div>
+					</Card.Header>
 					<Card.Body>
-						<Card.Text id="time-left"> {timeFormat(timeLeft)} </Card.Text>
+						<Card.Text id="time-left" className='display-4'> {timeFormat(timeLeft)} </Card.Text>
 					</Card.Body>
 					<Card.Footer className="flex-nowrap p-0">
-						<Button className="col-4 m-0 rounded-0 Card-Btn" id="start_stop" onClick={this.startClicked}> {StartIcon} 
-							<span className='ps-1'>Start</span>
+						<Button className="col-6 m-0 rounded-0 Card-Btn " id="start_stop" onClick={this.startClicked}> {StartIcon} 
+							<span className='ps-1 fs-5'>Start</span>
 						</Button>
 		
-						<Button className="col-4 m-0 rounded-0 Card-Btn" id="pause" onClick={this.pauseClicked}> {PauseIcon} 
+						{/* <Button className="col-4 m-0 rounded-0 Card-Btn" id="pause" onClick={this.pauseClicked}> {PauseIcon} 
 							<span className='ps-1'>Pause</span> 
-						</Button>
+						</Button> */}
 		
-						<Button className="col-4 m-0 rounded-0 Card-Btn" id="reset" onClick={this.resetClicked}> {ResetIcon} 
-							<span className='ps-1'>Reset</span>
+						<Button className="col-6 m-0 rounded-0 Card-Btn" id="reset" onClick={this.resetClicked}> {ResetIcon} <span className='ps-1 fs-5'> Reset</span>
 						</Button>
 					</Card.Footer>
 				</Card>
